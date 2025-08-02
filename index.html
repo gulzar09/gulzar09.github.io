@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Portfolio</title>
+    <title>MD GULZAR HUSSAIN | Academic Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --accent-color: #e74c3c;
+            --primary-color: #2c3e50;  /* Dark blue from your screenshot */
+            --secondary-color: #34495e; /* Slightly lighter blue */
+            --accent-color: #e74c3c;   /* Red for highlights */
+            --text-color: #333;         /* Dark gray for text */
+            --light-color: #ecf0f1;     /* Light gray background */
+            --white: #ffffff;
         }
         
         * {
@@ -24,17 +25,17 @@
         body {
             display: flex;
             min-height: 100vh;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--light-color);
+            color: var(--text-color);
             line-height: 1.6;
         }
         
-        /* Sidebar Styles */
+        /* Sidebar Styles - Matches your screenshot's left panel */
         .sidebar {
             width: 280px;
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             color: white;
-            padding: 2rem 1rem;
+            padding: 2rem 1.5rem;
             position: fixed;
             height: 100vh;
             overflow-y: auto;
@@ -45,6 +46,8 @@
         .profile {
             text-align: center;
             margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1.5rem;
         }
         
         .profile-img {
@@ -52,22 +55,37 @@
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid var(--primary-color);
+            border: 5px solid var(--accent-color);
             margin-bottom: 1rem;
         }
         
         .profile h1 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            color: white;
         }
         
         .profile p {
             color: var(--light-color);
             font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            margin-top: 0.5rem;
+        }
+        
+        .profile a:hover {
+            color: var(--accent-color);
         }
         
         .nav-menu {
             list-style: none;
+            margin-top: 1.5rem;
         }
         
         .nav-menu li {
@@ -81,10 +99,11 @@
             padding: 0.8rem 1rem;
             border-radius: 5px;
             transition: all 0.3s;
+            font-size: 0.95rem;
         }
         
         .nav-menu a:hover, .nav-menu a.active {
-            background-color: var(--primary-color);
+            background-color: var(--accent-color);
             color: white;
         }
         
@@ -94,30 +113,13 @@
             text-align: center;
         }
         
-        .social-links {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        
-        .social-links a {
-            color: white;
-            margin: 0 0.5rem;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-        
         /* Mobile Menu Toggle */
         .menu-toggle {
             display: none;
             position: fixed;
             top: 20px;
             right: 20px;
-            background: var(--primary-color);
+            background: var(--accent-color);
             color: white;
             width: 50px;
             height: 50px;
@@ -136,6 +138,7 @@
             margin-left: 280px;
             padding: 2rem;
             transition: all 0.3s;
+            background-color: var(--white);
         }
         
         section {
@@ -143,7 +146,7 @@
             border-radius: 8px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             display: none;
         }
         
@@ -164,51 +167,56 @@
             border-bottom: 2px solid var(--light-color);
         }
         
-        /* Home Section */
+        /* Home Section - Matches your introduction */
         #home {
-            text-align: center;
-        }
-        
-        #home .profile-img {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 1.5rem;
+            text-align: left;
+            padding: 2.5rem;
         }
         
         #home h1 {
             font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-        }
-        
-        #home h2 {
-            font-size: 1.2rem;
             color: var(--primary-color);
             margin-bottom: 1.5rem;
         }
         
-        #home p {
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
-            font-size: 1.1rem;
+        #home h2 {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-weight: normal;
         }
         
-        .specialization {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        #home p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .research-interests {
             margin: 2rem 0;
         }
         
-        .specialization span {
-            background: var(--light-color);
-            padding: 0.5rem 1rem;
-            margin: 0.5rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+        .research-interests h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
         
-        /* Experience Section */
+        .research-interests ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+        
+        .research-interests li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Timeline Styles for Experience */
         .timeline {
             position: relative;
             padding-left: 50px;
@@ -250,6 +258,7 @@
         .timeline-title {
             font-weight: bold;
             margin-bottom: 0.5rem;
+            color: var(--primary-color);
         }
         
         .timeline-subtitle {
@@ -258,33 +267,26 @@
             margin-bottom: 0.5rem;
         }
         
-        /* Projects & Publications */
-        .project, .publication {
+        /* Publications & Projects */
+        .publication, .project {
             margin-bottom: 1.5rem;
             padding-bottom: 1.5rem;
             border-bottom: 1px solid #eee;
         }
         
-        .project:last-child, .publication:last-child {
-            border-bottom: none;
-        }
-        
-        .project-title, .publication-title {
+        .publication-title, .project-title {
             font-weight: bold;
             margin-bottom: 0.5rem;
+            color: var(--primary-color);
         }
         
-        .project-meta, .publication-meta {
+        .publication-meta, .project-meta {
             font-size: 0.9rem;
             color: #666;
             margin-bottom: 0.5rem;
         }
         
-        .project-description, .publication-abstract {
-            margin-bottom: 0.5rem;
-        }
-        
-        .project-link, .publication-link {
+        .publication-link, .project-link {
             display: inline-block;
             background-color: var(--primary-color);
             color: white;
@@ -295,69 +297,8 @@
             transition: all 0.3s;
         }
         
-        .project-link:hover, .publication-link:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        /* Education & Awards */
-        .education-item, .award-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .education-degree, .award-name {
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-        }
-        
-        .education-institution, .award-organization {
-            font-style: italic;
-            margin-bottom: 0.3rem;
-        }
-        
-        .education-date, .award-date {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        /* Training & Activities */
-        .training-item, .activity-item {
-            margin-bottom: 1rem;
-        }
-        
-        .training-name, .activity-role {
-            font-weight: bold;
-            margin-bottom: 0.3rem;
-        }
-        
-        .training-organization, .activity-organization {
-            margin-bottom: 0.3rem;
-        }
-        
-        .training-date, .activity-date {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        /* CV Section */
-        .cv-download {
-            text-align: center;
-            margin-top: 2rem;
-        }
-        
-        .cv-button {
-            display: inline-block;
+        .publication-link:hover, .project-link:hover {
             background-color: var(--accent-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-        
-        .cv-button:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
         }
         
         /* Responsive Styles */
@@ -390,9 +331,8 @@
         }
         
         @media (max-width: 768px) {
-            #home .profile-img {
-                width: 150px;
-                height: 150px;
+            #home {
+                padding: 1.5rem;
             }
             
             #home h1 {
@@ -401,10 +341,6 @@
             
             #home h2 {
                 font-size: 1.1rem;
-            }
-            
-            #home p {
-                font-size: 1rem;
             }
             
             .timeline {
@@ -418,16 +354,11 @@
         
         @media (max-width: 480px) {
             section {
-                padding: 1rem;
-            }
-            
-            #home .profile-img {
-                width: 120px;
-                height: 120px;
+                padding: 1.2rem;
             }
             
             #home h1 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -441,70 +372,54 @@
     <!-- Sidebar Navigation -->
     <aside class="sidebar" id="sidebar">
         <div class="profile">
-            <img src="https://via.placeholder.com/150" alt="Profile Photo" class="profile-img">
-            <h1>Your Name</h1>
-            <p>Your Professional Title</p>
+            <img src="https://via.placeholder.com/150" alt="MD GULZAR HUSSAIN" class="profile-img">
+            <h1>MD GULZAR HUSSAIN</h1>
+            <p>Nanjing University of Information Science & Technology</p>
+            <a href="mailto:mdgulzar@mail.com">mdgulzar@mail.com</a>
+            <a href="https://mdgulzar.hussain" target="_blank">mdgulzar.hussain</a>
         </div>
         
         <ul class="nav-menu">
             <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
-            <li><a href="#research"><i class="fas fa-flask"></i> Research Projects & Grants</a></li>
+            <li><a href="#research"><i class="fas fa-flask"></i> Research Projects</a></li>
             <li><a href="#publications"><i class="fas fa-book"></i> Publications</a></li>
             <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
             <li><a href="#awards"><i class="fas fa-award"></i> Awards</a></li>
             <li><a href="#training"><i class="fas fa-certificate"></i> Training</a></li>
-            <li><a href="#activities"><i class="fas fa-users"></i> Extra-curricular Activities</a></li>
-            <li><a href="#cv"><i class="fas fa-file-pdf"></i> CV</a></li>
+            <li><a href="#activities"><i class="fas fa-users"></i> Activities</a></li>
+            <li><a href="#cv"><i class="fas fa-file-pdf"></i> Curriculum Vitae</a></li>
         </ul>
-        
-        <div class="social-links">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>
-            <a href="#"><i class="fab fa-researchgate"></i></a>
-        </div>
     </aside>
     
     <!-- Main Content -->
     <main class="main-content">
         <!-- Home/Introduction Section -->
         <section id="home" class="active">
-            <img src="https://via.placeholder.com/200" alt="Profile Photo" class="profile-img">
-            <h1>Your Name</h1>
-            <h2>Professional Title | Institution</h2>
+            <h1>MD GULZAR HUSSAIN</h1>
+            <h2>PhD Student | School of Software Science & Technology</h2>
             
             <p>
-                Welcome to my academic portfolio. I am a [your position] specializing in [your field] with a focus on [specific research interests]. 
-                My work bridges the gap between [related fields] and has applications in [application areas].
+                I am currently pursuing my PhD degree in Computer Application Technology at Nanjing University of Information Science & Technology under the supervision of Prof. Qing Tian. I have completed my Master's degree in Computer Application Technology at Changzhou University, Jiangsu, China under the supervision of Prof. Ye Shiren.
             </p>
             
             <p>
-                With over [X] years of research experience, I have published [number] papers in top-tier journals and secured 
-                [amount] in research funding. My work has been recognized with several awards including [notable awards].
+                I served as a Lecturer in the Department of CSE at Green University of Bangladesh from January 2019 to November 2022. I completed my undergraduate studies in Computer Science and Engineering at the Green University of Bangladesh.
             </p>
             
-            <div class="specialization">
-                <span>Research Area 1</span>
-                <span>Research Area 2</span>
-                <span>Methodology 1</span>
-                <span>Application Area</span>
-                <span>Interdisciplinary Topic</span>
+            <div class="research-interests">
+                <h3>Research Interests:</h3>
+                <ul>
+                    <li>Natural Language Processing</li>
+                    <li>Bangla Language Modeling and Processing</li>
+                    <li>Machine Learning</li>
+                    <li>Deep Learning Applications</li>
+                </ul>
             </div>
             
-            <p>
-                Currently, I am investigating [current research focus] at [your institution] where I lead the [research group/lab name]. 
-                I'm passionate about [teaching/mentoring/outreach activities] and regularly collaborate with [collaborators].
-            </p>
-            
-            <div style="margin-top: 2rem;">
-                <a href="#experience" class="cv-button" style="background-color: var(--primary-color); margin-right: 1rem;">
-                    <i class="fas fa-arrow-right"></i> Explore My Work
-                </a>
-                <a href="#cv" class="cv-button">
-                    <i class="fas fa-download"></i> Download CV
-                </a>
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:mdgulzar@mail.com">mdgulzar@mail.com</a></p>
+                <p><strong>Website:</strong> <a href="https://mdgulzar.hussain" target="_blank">mdgulzar.hussain</a></p>
             </div>
         </section>
         
@@ -513,61 +428,42 @@
             <h2>Professional Experience</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">2020 - Present</div>
-                    <h3 class="timeline-title">Senior Researcher</h3>
-                    <p class="timeline-subtitle">XYZ Research Institute</p>
-                    <p>Conducted cutting-edge research in your field. Led a team of 5 researchers. Published 10+ papers in top-tier journals.</p>
+                    <div class="timeline-date">2022 - Present</div>
+                    <h3 class="timeline-title">PhD Researcher</h3>
+                    <p class="timeline-subtitle">Nanjing University of Information Science & Technology</p>
+                    <p>Conducting research in Computer Application Technology with focus on Natural Language Processing and Bangla Language Modeling.</p>
                 </div>
                 
                 <div class="timeline-item">
-                    <div class="timeline-date">2017 - 2020</div>
-                    <h3 class="timeline-title">Postdoctoral Fellow</h3>
-                    <p class="timeline-subtitle">ABC University</p>
-                    <p>Worked on groundbreaking research project. Developed new methodologies. Collaborated with international teams.</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">2015 - 2017</div>
-                    <h3 class="timeline-title">Research Assistant</h3>
-                    <p class="timeline-subtitle">DEF Laboratory</p>
-                    <p>Assisted in data collection and analysis. Co-authored 3 publications. Presented findings at conferences.</p>
+                    <div class="timeline-date">2019 - 2022</div>
+                    <h3 class="timeline-title">Lecturer</h3>
+                    <p class="timeline-subtitle">Department of CSE, Green University of Bangladesh</p>
+                    <p>Taught undergraduate courses in Computer Science. Supervised student projects and research activities.</p>
                 </div>
             </div>
         </section>
         
-        <!-- Research Projects & Grants Section -->
+        <!-- Research Projects Section -->
         <section id="research">
-            <h2>Research Projects & Grants</h2>
+            <h2>Research Projects</h2>
             
             <div class="project">
-                <h3 class="project-title">Advanced Research in [Your Field]</h3>
+                <h3 class="project-title">Bangla Language Processing Framework</h3>
                 <div class="project-meta">
-                    <span>Principal Investigator | $500,000 | 2022-2025</span>
+                    <span>PhD Research Project | 2022-Present</span>
                 </div>
                 <p class="project-description">
-                    This project aims to investigate groundbreaking aspects of your research area. Funded by the National Science Foundation, this project involves collaboration with multiple institutions.
+                    Developing novel approaches for Bangla language understanding and generation using transformer-based architectures.
                 </p>
-                <a href="#" class="project-link">Project Website</a>
             </div>
             
             <div class="project">
-                <h3 class="project-title">Innovative Approaches to [Your Topic]</h3>
+                <h3 class="project-title">Cross-lingual Transfer Learning</h3>
                 <div class="project-meta">
-                    <span>Co-Investigator | $250,000 | 2020-2022</span>
+                    <span>Master's Thesis Project | 2018-2019</span>
                 </div>
                 <p class="project-description">
-                    Developed new methodologies for addressing key challenges in your field. Resulted in 5 publications and 2 patent applications.
-                </p>
-                <a href="#" class="project-link">Read More</a>
-            </div>
-            
-            <div class="project">
-                <h3 class="project-title">Early Career Research Grant</h3>
-                <div class="project-meta">
-                    <span>Principal Investigator | $100,000 | 2018-2020</span>
-                </div>
-                <p class="project-description">
-                    Established foundational research that led to subsequent larger grants. Trained 3 graduate students through this project.
+                    Investigated transfer learning techniques for low-resource languages using multilingual embeddings.
                 </p>
             </div>
         </section>
@@ -577,35 +473,18 @@
             <h2>Publications</h2>
             
             <div class="publication">
-                <h3 class="publication-title">Groundbreaking Discovery in [Your Field]</h3>
+                <h3 class="publication-title">Advances in Bangla NLP: A Comprehensive Survey</h3>
                 <div class="publication-meta">
-                    <span>Nature Journal, 2023 | First Author</span>
+                    <span>Journal of Natural Language Engineering, 2023 | First Author</span>
                 </div>
-                <p class="publication-abstract">
-                    This publication presents novel findings that challenge existing paradigms in the field. Cited 50+ times within the first year.
-                </p>
                 <a href="#" class="publication-link">View Publication</a>
             </div>
             
             <div class="publication">
-                <h3 class="publication-title">Comprehensive Review of [Your Topic]</h3>
+                <h3 class="publication-title">Transformer Models for Low-Resource Languages</h3>
                 <div class="publication-meta">
-                    <span>Annual Reviews, 2022 | Corresponding Author</span>
+                    <span>ACL Workshop, 2022 | Co-Author</span>
                 </div>
-                <p class="publication-abstract">
-                    This invited review synthesizes the current state of knowledge and identifies key future directions for research.
-                </p>
-                <a href="#" class="publication-link">View Publication</a>
-            </div>
-            
-            <div class="publication">
-                <h3 class="publication-title">Innovative Methodology for [Your Technique]</h3>
-                <div class="publication-meta">
-                    <span>Science Advances, 2021 | Co-Author</span>
-                </div>
-                <p class="publication-abstract">
-                    Developed and validated a new approach that has been widely adopted by the research community.
-                </p>
                 <a href="#" class="publication-link">View Publication</a>
             </div>
         </section>
@@ -614,26 +493,24 @@
         <section id="education">
             <h2>Education</h2>
             
-            <div class="education-item">
-                <h3 class="education-degree">Ph.D. in [Your Field]</h3>
-                <p class="education-institution">Prestigious University</p>
-                <p class="education-date">2012 - 2017</p>
-                <p>Dissertation: "Cutting-Edge Research in Your Specialization"</p>
-                <p>Advisor: Distinguished Professor</p>
+            <div class="timeline-item">
+                <div class="timeline-date">2022 - Present</div>
+                <h3 class="timeline-title">PhD in Computer Application Technology</h3>
+                <p class="timeline-subtitle">Nanjing University of Information Science & Technology</p>
+                <p>Supervisor: Prof. Qing Tian</p>
             </div>
             
-            <div class="education-item">
-                <h3 class="education-degree">M.S. in [Your Discipline]</h3>
-                <p class="education-institution">Renowned Institute</p>
-                <p class="education-date">2010 - 2012</p>
-                <p>Thesis: "Important Early Work in Your Field"</p>
+            <div class="timeline-item">
+                <div class="timeline-date">2018 - 2019</div>
+                <h3 class="timeline-title">M.S. in Computer Application Technology</h3>
+                <p class="timeline-subtitle">Changzhou University, Jiangsu, China</p>
+                <p>Supervisor: Prof. Ye Shiren</p>
             </div>
             
-            <div class="education-item">
-                <h3 class="education-degree">B.S. in [Your Major]</h3>
-                <p class="education-institution">Top-Tier College</p>
-                <p class="education-date">2006 - 2010</p>
-                <p>Graduated with Honors</p>
+            <div class="timeline-item">
+                <div class="timeline-date">2014 - 2018</div>
+                <h3 class="timeline-title">B.S. in Computer Science and Engineering</h3>
+                <p class="timeline-subtitle">Green University of Bangladesh</p>
             </div>
         </section>
         
@@ -641,77 +518,51 @@
         <section id="awards">
             <h2>Awards & Honors</h2>
             
-            <div class="award-item">
-                <h3 class="award-name">Distinguished Researcher Award</h3>
-                <p class="award-organization">International Society for Your Field</p>
-                <p class="award-date">2023</p>
-                <p>Recognized for outstanding contributions to the field through innovative research.</p>
+            <div class="timeline-item">
+                <div class="timeline-date">2021</div>
+                <h3 class="timeline-title">Outstanding Graduate Student Award</h3>
+                <p class="timeline-subtitle">Changzhou University</p>
             </div>
             
-            <div class="award-item">
-                <h3 class="award-name">Early Career Achievement Award</h3>
-                <p class="award-organization">National Academy of Sciences</p>
-                <p class="award-date">2021</p>
-                <p>Awarded to promising researchers within 10 years of completing their doctorate.</p>
-            </div>
-            
-            <div class="award-item">
-                <h3 class="award-name">Best Paper Award</h3>
-                <p class="award-organization">Journal of Important Research</p>
-                <p class="award-date">2019</p>
-                <p>Recognized as the most impactful publication of the year in the journal.</p>
+            <div class="timeline-item">
+                <div class="timeline-date">2018</div>
+                <h3 class="timeline-title">Best Undergraduate Thesis Award</h3>
+                <p class="timeline-subtitle">Green University of Bangladesh</p>
             </div>
         </section>
         
         <!-- Training Section -->
         <section id="training">
-            <h2>Professional Training</h2>
+            <h2>Training & Certifications</h2>
             
-            <div class="training-item">
-                <h3 class="training-name">Advanced Statistical Methods</h3>
-                <p class="training-organization">Data Science Institute</p>
-                <p class="training-date">Summer 2022</p>
-                <p>Intensive training in machine learning applications for research data analysis.</p>
+            <div class="timeline-item">
+                <div class="timeline-date">2021</div>
+                <h3 class="timeline-title">Advanced NLP Workshop</h3>
+                <p class="timeline-subtitle">Association for Computational Linguistics</p>
             </div>
             
-            <div class="training-item">
-                <h3 class="training-name">Leadership in Academia</h3>
-                <p class="training-organization">Center for Academic Excellence</p>
-                <p class="training-date">2021</p>
-                <p>Year-long program developing leadership skills for research team management.</p>
-            </div>
-            
-            <div class="training-item">
-                <h3 class="training-name">Grant Writing Workshop</h3>
-                <p class="training-organization">National Funding Agency</p>
-                <p class="training-date">2019</p>
-                <p>Hands-on training in preparing competitive grant proposals.</p>
+            <div class="timeline-item">
+                <div class="timeline-date">2020</div>
+                <h3 class="timeline-title">Deep Learning Specialization</h3>
+                <p class="timeline-subtitle">DeepLearning.AI</p>
             </div>
         </section>
         
-        <!-- Extra-curricular Activities Section -->
+        <!-- Activities Section -->
         <section id="activities">
             <h2>Extra-curricular Activities</h2>
             
-            <div class="activity-item">
-                <h3 class="activity-role">Mentor</h3>
-                <p class="activity-organization">Women in STEM Program</p>
-                <p class="activity-date">2018 - Present</p>
-                <p>Guiding young female researchers through their academic and professional development.</p>
+            <div class="timeline-item">
+                <div class="timeline-date">2019 - 2022</div>
+                <h3 class="timeline-title">Student Mentor</h3>
+                <p class="timeline-subtitle">Green University of Bangladesh</p>
+                <p>Guided undergraduate students in research projects and career development.</p>
             </div>
             
-            <div class="activity-item">
-                <h3 class="activity-role">Organizing Committee Member</h3>
-                <p class="activity-organization">International Conference on Your Field</p>
-                <p class="activity-date">2020, 2022</p>
-                <p>Coordinated program development and speaker selection for major conference.</p>
-            </div>
-            
-            <div class="activity-item">
-                <h3 class="activity-role">Volunteer</h3>
-                <p class="activity-organization">Science Outreach Organization</p>
-                <p class="activity-date">2015 - Present</p>
-                <p>Engaging with K-12 students to promote interest in scientific careers.</p>
+            <div class="timeline-item">
+                <div class="timeline-date">2017 - 2018</div>
+                <h3 class="timeline-title">President, Computer Club</h3>
+                <p class="timeline-subtitle">Green University of Bangladesh</p>
             </div>
         </section>
         
@@ -723,15 +574,6 @@
             <div class="cv-download">
                 <a href="#" class="cv-button"><i class="fas fa-download"></i> Download Full CV (PDF)</a>
             </div>
-            
-            <h3 style="margin-top: 2rem;">Selected Highlights</h3>
-            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-                <li style="margin-bottom: 0.5rem;">20+ peer-reviewed publications in top journals</li>
-                <li style="margin-bottom: 0.5rem;">$1.2M in research funding as PI</li>
-                <li style="margin-bottom: 0.5rem;">5 invited keynote presentations at international conferences</li>
-                <li style="margin-bottom: 0.5rem;">Mentored 10 graduate students</li>
-                <li style="margin-bottom: 0.5rem;">2 patent applications</li>
-            </ul>
         </section>
     </main>
 
@@ -788,11 +630,6 @@
             
             // Make home section active by default
             document.querySelector('.nav-menu a[href="#home"]').click();
-            
-            // Make sidebar scrollable if content is too long
-            if (sidebar.scrollHeight > window.innerHeight) {
-                sidebar.style.overflowY = 'auto';
-            }
         });
     </script>
 </body>
