@@ -368,6 +368,33 @@
         
         /* Responsive Styles */
         @media (max-width: 992px) {
+            .no-scroll {
+                overflow: hidden;
+                position: fixed;
+                width: 100%;
+            }
+            
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        /* Prevent horizontal scroll */
+        body {
+            overflow-x: hidden;
+        }
+
+
+        @media (max-width: 992px) {
             .sidebar {
                 transform: translateX(-100%);
                 width: 280px;
@@ -445,9 +472,9 @@
         </div>
         <div class="social-links">
                 <a href="mailto:gulzar.ace@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-google-scholar"></i></a>
-                <a href="#"><i class="fab fa-researchgate"></i></a>
+                <a href="https://github.com/gulzar09"><i class="fab fa-github"></i></a>
+                <a href="https://scholar.google.com/citations?user=DGAGyj0AAAAJ"><i class="fab fa-google-scholar"></i></a>
+                <a href="https://www.researchgate.net/profile/Md-Gulzar-Hussain"><i class="fab fa-researchgate"></i></a>
         </div> 
         
         <ul class="nav-menu">
@@ -467,7 +494,7 @@
     <main class="main-content">
         <!-- Home/Introduction Section -->
         <section id="home" class="active">
-            <h2>Md Gulzar Hussain<br>
+            <h2><Strong>Md Gulzar Hussain</Strong><br>
                 PhD Candidate | School of Software, Nanjing University of Information Science & Technology
             </h2>
             
@@ -621,16 +648,17 @@
         <!-- Awards Section -->
         <section id="awards">
             <h2>Academic Awards</h2>
-            <li>Selected Seven times in VC’s List of Honor for excellent result</li>
-            <li>Selected Once in Dean’s List of Honor for excellent result</li>
+            <li>Selected Seven times in VC's List of Honor for excellent result</li>
+            <li>Selected Once in Dean's List of Honor for excellent result</li>
+
 
             <h2>Contest Awards</h2>
-            <li>Placed second in team programming contest in Intra Semester Programming Contest of CSE Fest’2016</li>
-            <li>Placed second in individual programming contest in Intra Semester Programming Contest of CSE Fest’2015</li>
+            <li>Placed second in team programming contest in Intra Semester Programming Contest of CSE Fest'2016</li>
+            <li>Placed second in individual programming contest in Intra Semester Programming Contest of CSE Fest'2015</li>
 
             <h2>Training & Certifications</h2>
             <div class="timeline-item">
-                <div class="timeline-date">June,2019 - September,2019 (Three Months)</div>
+                <div class="timeline-date">June, 2019 - September, 2019 (Three Months)</div>
                 <h3 class="timeline-title">Certification of Teaching & Learning</h3>
                 <p class="timeline-subtitle">Green University Center of Excellence for Teaching and Learning (GUCETL)</p>
             </div>
@@ -640,25 +668,15 @@
         <!-- Activities Section -->
         <section id="activities">
             <h2>Extra-curricular Activities</h2>
+            <li>Selected as Mentor for junior students of Fall'2017, Spring'2018, Summer'2018 Semesters.</li>
+            <li>Selected as Programming Secretary of Green University Computer Club for 2017 & 2018 and arranged Internal Programming Contest many times.</li>
             
-            <div class="timeline-item">
-                <div class="timeline-date">2019 - 2022</div>
-                <h3 class="timeline-title">Student Mentor</h3>
-                <p class="timeline-subtitle">Green University of Bangladesh</p>
-                <p>Guided undergraduate students in research projects and career development.</p>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-date">2017 - 2018</div>
-                <h3 class="timeline-title">President, Computer Club</h3>
-                <p class="timeline-subtitle">Green University of Bangladesh</p>
-            </div>
         </section>
         
         <!-- CV Section -->
         <section id="cv">
             <h2>Curriculum Vitae</h2>
-            <p>My complete academic CV with detailed information about my professional journey, publications, presentations, and more.</p>
+            <p>My complete academic CV with detailed information about my professional journey, publications, and more.</p>
             
             <div class="cv-download">
                 <a href="#" class="cv-button"><i class="fas fa-download"></i> Download Full CV (PDF)</a>
@@ -668,58 +686,71 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            const sections = document.querySelectorAll('section');
-            const menuToggle = document.getElementById('menuToggle');
-            const sidebar = document.getElementById('sidebar');
-            
-            // Mobile menu toggle
-            menuToggle.addEventListener('click', function() {
-                sidebar.classList.toggle('active');
-                menuToggle.innerHTML = sidebar.classList.contains('active') ? 
-                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            });
-            
-            // Navigation functionality
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Hide mobile menu after selection
-                    if (sidebar.classList.contains('active')) {
-                        sidebar.classList.remove('active');
-                        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                    
-                    // Remove active class from all links and sections
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    sections.forEach(s => s.classList.remove('active'));
-                    
-                    // Add active class to clicked link
-                    this.classList.add('active');
-                    
-                    // Show corresponding section
-                    const targetId = this.getAttribute('href');
-                    document.querySelector(targetId).classList.add('active');
-                    
-                    // Smooth scroll to section
-                    document.querySelector(targetId).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-            
-            // Close menu when clicking outside on mobile
-            document.addEventListener('click', function(e) {
-                if (!sidebar.contains(e.target) && e.target !== menuToggle) {
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        const sections = document.querySelectorAll('section');
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const html = document.documentElement;
+        
+        // Mobile menu toggle with better handling
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            sidebar.classList.toggle('active');
+            html.classList.toggle('no-scroll');
+            menuToggle.innerHTML = sidebar.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Navigation functionality
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                // Hide mobile menu
+                if (sidebar.classList.contains('active')) {
                     sidebar.classList.remove('active');
+                    html.classList.remove('no-scroll');
                     menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
                 }
+                
+                // Update active states
+                navLinks.forEach(l => l.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelector(targetId).classList.add('active');
+                
+                // Mobile-friendly scroll
+                setTimeout(() => {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
             });
-            
-            // Make home section active by default
-            document.querySelector('.nav-menu a[href="#home"]').click();
         });
+        
+        // Better click-outside handling
+        document.addEventListener('click', function(e) {
+            if (!sidebar.contains(e.target) && e.target !== menuToggle) {
+                sidebar.classList.remove('active');
+                html.classList.remove('no-scroll');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Touch event improvements
+        document.addEventListener('touchstart', function(e) {
+            if (!sidebar.contains(e.target) && e.target !== menuToggle) {
+                sidebar.classList.remove('active');
+                html.classList.remove('no-scroll');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        }, { passive: true });
+        
+        // Initialize
+        document.querySelector('.nav-menu a[href="#home"]').click();
+    });
     </script>
 </body>
 </html>
