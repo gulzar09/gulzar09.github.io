@@ -49,6 +49,22 @@
         .social-links {
             margin-top: 0.5rem;
             gap: 0.5rem;
+            display: flex;
+            align-items: center; /* Vertically center icons */
+        }
+
+        .social-links a {
+            font-size: 1.5rem; /* Adjust this value to change size */
+            width: 2rem; /* Fixed width for consistent sizing */
+            height: 2rem; /* Fixed height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease; /* Smooth hover effect */
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
         }
         
         .profile {
